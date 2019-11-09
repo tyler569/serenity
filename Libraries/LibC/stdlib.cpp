@@ -25,7 +25,7 @@ static __atexit_handler __atexit_handlers[32];
 
 void exit(int status)
 {
-    for (int i = 0; i < __atexit_handler_count; ++i)
+    for (int i = __atexit_handler_count - 1; i >= 0; --i)
         __atexit_handlers[i]();
     extern void _fini();
     _fini();
